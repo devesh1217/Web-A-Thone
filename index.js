@@ -45,9 +45,11 @@ server.use('/api/items', itemRouter);
 server.use('/api/menu', categoryRouter);
 server.use('/api/order', orderRouter);
 server.use('/api/user', userRouter);
-server.use('/admin', path.resolve(process.env.PUBLIC_DIR, 'admin', 'index.html'));
 
 
+server.use('/admin', (req, res) => {
+    res.sendFile(path.resolve(process.env.PUBLIC_DIR, 'admin', 'index.html'));
+})
 server.use('*', (req, res) => {
     res.sendFile(path.resolve(process.env.PUBLIC_DIR, 'index.html'));
 })
