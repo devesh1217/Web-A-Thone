@@ -1,26 +1,23 @@
-import mongoose from 'mongoose';
-import itemSchema from '../models/item.js'
+import categorySchema from '../models/category.js'
 
 
-const itemRoute = {
+const categoryRoute = {
     get: async (req, res) => {
         let data;
 
         try{
-            data = await itemSchema.find({});
+            data = await categorySchema.find({});
             res.status(200).json(data);
         } catch(err){
             console.log(err)
             res.sendStatus(501);
         }   
     },
-    getOne: async (req, res) => {
+    getName: async (req, res) => {
         let data;
-        const id = (req.params.id);
+
         try{
-            data = await itemSchema.aggregate([
-                {$match: { categoryID: id } }
-            ]);
+            data = await categorySchema.findOne({_id:req.params.id},{categoryName:1});
             res.status(200).json(data);
         } catch(err){
             console.log(err)
@@ -30,4 +27,4 @@ const itemRoute = {
 }
 
 
-export default itemRoute;
+export default categoryRoute;

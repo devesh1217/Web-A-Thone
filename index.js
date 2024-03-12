@@ -4,6 +4,10 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
 import jwt from 'jsonwebtoken'
+import itemRouter from './routes/item.js';
+import categoryRouter from './routes/category.js';
+import orderRouter from './routes/order.js';
+import userRouter from './routes/user.js';
 
 const server = express();
 
@@ -37,7 +41,11 @@ const auth = (req, res, next) => {
 server.use(cors());
 server.use(express.json());
 server.use(express.static(process.env.PUBLIC_DIR));
-server.use('/api/user', auth, userRouter);
+server.use('/api/items', itemRouter);
+server.use('/api/menu', categoryRouter);
+server.use('/api/order', orderRouter);
+server.use('/api/user', userRouter);
+server.use('/admin', path.resolve(process.env.PUBLIC_DIR, 'admin', 'index.html'));
 
 
 server.use('*', (req, res) => {

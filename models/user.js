@@ -4,7 +4,7 @@ import { Schema } from "mongoose";
 const schema = new mongoose.Schema({
     userName: {
         type: String,
-        required: true,j
+        required: true,
     },
     mobile: {
         type: String,
