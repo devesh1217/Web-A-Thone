@@ -1,8 +1,6 @@
-let link = "http://192.168.213.224:8080/"
 let totalOrder;
 
-
-axios.get(link + "api/order/get/pending")
+axios.get( "/api/order/get/pending")
     .then(data => {
         const ordersContainer = document.getElementById('orderIdBoxid1');
         let c = 1;
@@ -68,7 +66,7 @@ axios.get(link + "api/order/get/pending")
     
                 document.querySelectorAll('.AccpectBtn').forEach((curr) => {
                     curr.addEventListener('click', (e) => {
-                        axios.get(link + "api/order/set/taken/" + e.target.id)
+                        axios.get( "/api/order/set/taken/" + e.target.id)
                             .then((doc) => {
                                 location.reload();
                             }).catch(error => {
@@ -82,7 +80,7 @@ axios.get(link + "api/order/get/pending")
     })
         
 
-        axios.get(link + "api/order/get/taken")
+        axios.get( "/api/order/get/taken")
             .then(data => {
                 const ordersContainer = document.getElementById('orderIdBoxid2');
                 let c = 1;
@@ -149,7 +147,7 @@ axios.get(link + "api/order/get/pending")
     
                         document.querySelectorAll('.PreparedBtn').forEach((curr) => {
                             curr.addEventListener('click', (e) => {
-                                axios.get(link + "api/order/set/ready/" + e.target.id)
+                                axios.get( "/api/order/set/ready/" + e.target.id)
                                     .then((doc) => {
                                         location.reload();
                                     }).catch(error => {
@@ -164,7 +162,7 @@ axios.get(link + "api/order/get/pending")
                 
             })
 
-        axios.get(link + "api/order/get/ready")
+        axios.get( "/api/order/get/ready")
             .then(data => {
                 const ordersContainer = document.getElementById('orderIdBoxid3');
                 let c = 1;
@@ -231,7 +229,7 @@ axios.get(link + "api/order/get/pending")
     
                         document.querySelectorAll('.DeliveredBtn').forEach((curr) => {
                             curr.addEventListener('click', (e) => {
-                                axios.get(link + "api/order/set/prev/" + e.target.id)
+                                axios.get( "/api/order/set/prev/" + e.target.id)
                                     .then((doc) => {
                                         location.reload();
                                     }).catch(error => {
