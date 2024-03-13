@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import orderSchema from '../models/order.js'
 
-
 const orderRoute = {
     create: async (req, res) => {
         const data = new orderSchema(req.body);

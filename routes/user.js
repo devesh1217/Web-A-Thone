@@ -1,9 +1,10 @@
 import express from 'express';
 import user from '../controllers/user.js'
 
-const orderRouter = express.Router();
+const userRouter = express.Router();
 
-orderRouter
+userRouter
     .get('/otp/get', user.otp)
+    .post('/auth', user.login)
 
-export default orderRouter;
+export default userRouter;

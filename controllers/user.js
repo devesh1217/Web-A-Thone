@@ -34,6 +34,16 @@ const userRoute = {
             res.status(501).json({success:false});
         })
     },
+    login: async (req,res) => {
+        const id = req.body.id;
+        const pswd = req.body.pswd;
+        if(pswd==process.env.PSWD && id==process.env.USER_ID){
+            res.status(200).json({isvalid:true});
+        } else {
+            res.status(200).json({isvalid:false});
+        }
+
+    },
 }
 
 

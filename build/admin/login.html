@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/admin/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap"
+    />
+    <title>Admin Login</title>
+  </head>
+  <body>
+    <div id="box">
+      <form class="form-control" action="">
+        <p class="title">Admin Login</p>
+        <div class="input-field">
+          <input required="" id="id" class="input" type="text" />
+          <label class="label" for="input">Enter Email</label>
+        </div>
+        <div class="input-field">
+          <input required="" id="pswd" class="input" type="password" />
+          <label class="label" for="input">Enter Password</label>
+        </div>
+        <a>Forgot your password?</a>
+        <a id="remark" style="color: red;text-Align:center"></a>
+        <button class="submit-btn" id="submit">Sign In</button>
+      </form>
+    </div>
+  </body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+      document.getElementById('submit').addEventListener('click',(e)=>{
+        e.preventDefault();
+        axios.post('/api/user/auth',{
+            id:document.getElementById('id').value,
+            pswd:document.getElementById('pswd').value
+        }).then(doc=>{
+            console.log(doc.data)
+            if(doc.data.isvalid){
+                localStorage.setItem('adminId',document.getElementById('id').value)
+                window.location='/admin'
+            } else {
+                document.getElementById('remark').innerHTML='Invalid Id or Password'
+            }
+        }).catch(err=>{
+            console.log(err)
+        })
+    });
+  </script>
+</html>
