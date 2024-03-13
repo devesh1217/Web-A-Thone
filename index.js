@@ -60,7 +60,7 @@ server.use('/api/user', userRouter);
 
 
 server.use('/admin/login', (req, res) => {
-    res.sendFile(path.resolve(process.env.PUBLIC_DIR, 'admin', 'login.html'));
+    res.sendFile(path.resolve(process.env.PUBLIC_DIR, 'admin', 'login', 'login.html'));
 })
 server.use('/admin', (req, res) => {
     res.sendFile(path.resolve(process.env.PUBLIC_DIR, 'admin', 'index.html'));
